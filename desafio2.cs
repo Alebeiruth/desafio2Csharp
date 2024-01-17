@@ -1,26 +1,27 @@
-string? readResult;
-string roleName = "";
-bool validEntry = false;
 
-do
-{                
-    Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
-    readResult = Console.ReadLine();
-    if (readResult != null) 
+string? resultadoLeitura;
+string funcao = "";
+bool entradaCorresponde = false;
+
+do{
+    Console.WriteLine("Qual a sua função: Administrador. Gerente ou Usuario");
+    resultadoLeitura = Console.ReadLine();
+    
+    if (resultadoLeitura != null)
     {
-        roleName = readResult.Trim();
+        funcao = resultadoLeitura.Trim();
     }
 
-    if (roleName.ToLower() == "administrator" || roleName.ToLower() == "manager" || roleName.ToLower() == "user") 
+    if (funcao.ToLower() == "Administrador" || funcao.ToLower() == "Gerente" || funcao.ToLower() == "Usuario" )
     {
-        validEntry = true;
+        entradaCorresponde = true;
     }
     else
     {
-        Console.Write($"The role name that you entered, \"{roleName}\" is not valid. ");
+        Console.WriteLine($"Desculpe, sua entrada {funcao} é incorreta.");
     }
 
-} while (validEntry == false);
+}while(entradaCorresponde == false);
 
-Console.WriteLine($"Your input value ({roleName}) has been accepted.");
-readResult = Console.ReadLine();
+Console.WriteLine($"Sua entrada foi {funcao}");
+resultadoLeitura = Console.ReadLine();
