@@ -1,27 +1,26 @@
 
-string? resultadoLeitura;
-string funcao = "";
-bool entradaCorresponde = false;
+bool valueNum = false; // deve ser criar bool para Do While
+string? usuarioResp; // se cria variavel que pode ser nula
+string respostaUsuario = ""; //variavel vazia se torna valor digitado pelo usuario
 
-do{
-    Console.WriteLine("Qual a sua função: Administrador. Gerente ou Usuario");
-    resultadoLeitura = Console.ReadLine();
-    
-    if (resultadoLeitura != null)
+Console.WriteLine("Enter your role name (Administrator, Manager, or User)"); //pergunta do menu
+
+do
+{
+    usuarioResp = Console.ReadLine();//varariavel de entrada feita pelo usuario
+    if (usuarioResp != null)//averigua se é diferente de nulo
     {
-        funcao = resultadoLeitura.Trim();
+        respostaUsuario = usuarioResp.Trim();//entra no bloco caso não seja nulo e variavel vazia se torna o valor digitado sem espaço vazios(Trim)
     }
-
-    if (funcao.ToLower() == "Administrador" || funcao.ToLower() == "Gerente" || funcao.ToLower() == "Usuario" )
+    
+    if (respostaUsuario.ToLower() == "administrator" || respostaUsuario.ToLower() == "manager" || respostaUsuario.ToLower() == "user" )// aqui ele compara a resposta do usuario com as 3 strings
     {
-        entradaCorresponde = true;
+        valueNum = true; // caso se verdade, o loop se encerra aqui e no segundo print/Console.WriteLine sai a resposta
     }
     else
     {
-        Console.WriteLine($"Desculpe, sua entrada {funcao} é incorreta.");
+        Console.WriteLine($"The role name that you entered, {respostaUsuario} is not valid.");// caso seja incorreto essa msg aparece e o loop continua
     }
 
-}while(entradaCorresponde == false);
-
-Console.WriteLine($"Sua entrada foi {funcao}");
-resultadoLeitura = Console.ReadLine();
+}while(valueNum == false); //variavel sendo igual a falso o loop continua
+Console.WriteLine($"Your input value ({respostaUsuario}) has been accepted.");// mensagem de acerto
